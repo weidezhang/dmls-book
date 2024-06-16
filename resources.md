@@ -111,8 +111,10 @@ To create Discover Weekly, there are three main types of recommendation models t
 * [An Overview of Weak Supervision](https://www.snorkel.org/blog/weak-supervision) (Ratner et al., 2018) 
 
 ## Chapter 5. Feature Engineering
+detecting if there is data leakage: if a feature has a very high correlation with model prediction, investigate how this feature is generated and whether the correlation makes sense. 
 
 * [Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book/) (Christoph Molnar, 2022): An amazingly detailed introduction to interpretability
+* Practical Lessons from Predictiong Clicks on Ads at Facebook (Search Online)  
 
 ## Chapter 6. Model Development and Offline Evaluation
 
@@ -126,7 +128,7 @@ To create Discover Weekly, there are three main types of recommendation models t
 * [Techniques for Training Large Neural Networks](https://openai.com/blog/techniques-for-training-large-neural-networks/) (OpenAI 2022) 
 * [A survey of model compression and acceleration for deep neural networks](https://arxiv.org/abs/1710.09282) (Cheng et al., IEEE Signal Processing Magazine 2017)
 * [Towards Federated Learning at Scale: System Design](https://arxiv.org/abs/1902.01046) (Bonawitz et al, 2019)
-
+* Rules of Machine Learning: Best Practises for ML Engineering (Search Online)
 
 ### Model evaluation
 
@@ -139,10 +141,26 @@ To create Discover Weekly, there are three main types of recommendation models t
 
 
 ## Chapter 7. Model Deployment and Prediction Service
-
+Streamify Batch prediction and online prediction and use feature store to ensure consistency between batch and online prediction 
+Model Compression: Low Rank Factorization, Knowledge Distillation, Pruning, Quantization
+Edge Deployment: TVM 
+Operator Optimization: Loop Tiling, Vectorization, Parallelization, Operator Fusion, 
+* Machine Learning with Flink in Weibo (Search Online)
+* "Instructmentation, Observability and Monitoring of Machine Learning Models (Search Online)
+* 10 Companies Killing it at DevOps (Search Online)
+* Streaming SQL to Unify Batch and Stream Processing w/ Apache Flink
+* How we scaled bert to serve 1+ billions daily request on cpu
+* Architecture of ML Systems 04 Operator Fusion and Runtime Adapation (Graz Univesityt Matthias Boehm)
 
 ## Chapter 8. Data Distribution Shifts and Monitoring
+degenerate feedback loop: causing system output to be more homogeneous over time. Solution: add randomization, a more intelligent approach such as contextual bandits as an exploratory approach can help increase item diversity with acceptable prediction accuracy loss. 
+position of a prediction is shown also affects its feedback in any way, during inference , we can set the 1st position feature as false and then predict items and then choose the ranking. 
+data distribution shifts: domain adapation, retrain with target distribution
+monitoring model accuracy: monitoring features (might not directly related with model performance), monitoring prediction, monitoring raw inputs and use logs 
 
+* Why Tiktok Made Its Users So Obsessive
+* Improving Aggregate Recommendation Diversity Using Ranking-Based Techniques
+* Recommendations as Treatments: Debiasing Learning and Evaluation
 * [Beyond Incremental Processing: Tracking Concept Drift](https://www.aaai.org/Papers/AAAI/1986/AAAI86-084.pdf) (Jeffrey C. Schlimmer and Richard H. Granger, Jr., 1986). Concept drift isn’t something new!
 * [Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift](https://arxiv.org/abs/1810.11953) (Rabanser et al., 2019)
 * [Out-of-Distribution Generalization via Risk Extrapolation (REx)](http://proceedings.mlr.press/v139/krueger21a.html) (Krueger et al., 2020) 
@@ -155,11 +173,20 @@ To create Discover Weekly, there are three main types of recommendation models t
 
 
 ## Chapter 9. Continual Learning and Test in Production
+4 stages: 
+1. manual , stateless retraining
+2. automated retraining: pull data, downsample / upsample, extract features, data label, train, evaluate, deploy
+3. stateful training (has a base model and incrementally update with new data)
+4. continual learning
+A/B Testing:
 
+* Log and Wait (Releated to Stage 2, Faire has great blog post https://oreil.ly/AxFnJ)
 * [Application deployment and testing strategies](https://cloud.google.com/solutions/application-deployment-and-testing-strategies) (Google)
 * [MLOps: Continuous delivery and automation pipelines in machine learning](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning) (Google)
 * [Automated Canary Analysis at Netflix with Kayenta](https://netflixtechblog.com/automated-canary-analysis-at-netflix-with-kayenta-3260bc7acc69) (Michael Graff and Chris Sanden, Netflix Technology Blog 2018)
-
+* A/B Testing - Is there a better way? An exploration of Multi-Armed Bandits
+* A Contextual-Bandit Approach to Personalized News Article Recommendation
+* 
 
 ### Contextual bandits
 
