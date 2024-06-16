@@ -178,7 +178,8 @@ monitoring model accuracy: monitoring features (might not directly related with 
 2. automated retraining: pull data, downsample / upsample, extract features, data label, train, evaluate, deploy
 3. stateful training (has a base model and incrementally update with new data)
 4. continual learning
-A/B Testing:
+A/B Testing: more invovle more samples needed to reach test significance; For item ranking, interleaving "reliably identifies the best algorithms with considerably smaller sample size compared to the traditional A/B testing"
+
 
 * Log and Wait (Releated to Stage 2, Faire has great blog post https://oreil.ly/AxFnJ)
 * [Application deployment and testing strategies](https://cloud.google.com/solutions/application-deployment-and-testing-strategies) (Google)
